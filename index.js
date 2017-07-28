@@ -28,15 +28,64 @@ let scraper = function(link){
         nightmare
         .evaluate(() => {
             //TODO: crux of algorithm. need to finish it.
-            document.getElementsByClassName(site.reviewsection).forEach()
-        })
-        // check if next button works
-        .evaluate(() => {
+            document.getElementsByClassName(site.reviewsection).forEach(review => {
+                // FIXME: need to parse these elements to work properly
+                let rating = review.children;
+                let content = review.children;
+                let contentFiltered = content;
+                let goodbad = utils.starCount(rating);
+                utils.reviewParse(contentFiltered, data, goodbad);
+            })
+            // check if next button works
             if (!document.getElementsByClassName(site.next)){
                 nextpage = false;
             }
-        });
+        })
+        // // check if next button works. EDIT: moved inside of first .evaluate cause it doesn't matter
+        // .evaluate(() => {
+        //     if (!document.getElementsByClassName(site.next)){
+        //         nextpage = false;
+        //     }
+        // });
     }
+    // go through 'data' hashmap to find the top words that aren't stopwords that can be returned
+    let goodArray = [];
+    let badArray = [];
+    // FIXME: make this code dry. too repetitive right now. 
+    Object.values(data.good).forEach(word => {
+        if (goodArray.length === 0){
+            goodArray.push(word);
+        } else if (goodArray.length < 20){
+            let i = 0;
+            while (goodArray[i][1] < word[1] && i < goodArray.length){
+                i++;
+            }
+            goodArray.splice(i, 0, word);
+        } else {
+            let j = 0;
+            while (goodArray[i][1] < word[1] && j < goodArray.length){
+                j++;
+            }
+            goodArray.splice(j, 1, word);
+        }
+    });
+    Object.values(data.bad).forEach(word => {
+        if (badArray.length === 0){
+            badArray.push(word);
+        } else if (badArray.length < 20){
+            let i = 0;
+            while (badArray[i][1] < word[1] && i < badArray.length){
+                i++;
+            }
+            badArray.splice(i, 0, word);
+        } else {
+            let j = 0;
+            while (badArray[i][1] < word[1] && j < badArray.length){
+                j++;
+            }
+            badArray.splice(j, 1, word);
+        }
+    });
 };
 
 // nightmare

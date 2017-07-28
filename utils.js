@@ -12,22 +12,18 @@ module.exports = {
             nightmare.click(`.${input}`);
         }
     },
-    // FIXME: make sure data object is dictionary object that is pass-by-reference from index.js file, review should be array
     reviewParse: function(review, data, goodbad){
         // add words to data one by one
         for (let i = 0; i < review.length; i++){
-            // TODO: remove stopwords
-            let stopwords = [];
-            if (/*!stopword*/){
-                if (data.hasOwnProperty(review[i])){
-                    data[goodbad][review[i]]++;
-                } else {
-                    data[goodbad][review[i]] = 1;
-                }
+            // NOTE: remove stopwords later, when you're looking for the top words. should save computation
+            if (data.hasOwnProperty(review[i])){
+                data[goodbad][review[i]][1]++;
+            } else {
+                data[goodbad][review[i]] = [review[i], 1];
             }
         }
     },
-    starCount: function(){
+    starCount: function(rating){
         if (){
             return 'good';
         } else if (){
