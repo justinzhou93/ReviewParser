@@ -1,0 +1,22 @@
+{
+  "name": "reviewparser",
+  "version": "1.0.0",
+  "description": "looks through reviews in order to find word associations of good reviews and bad reviews in order to determine what's good/bad about product",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/justinzhou93/ReviewParser.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/justinzhou93/ReviewParser/issues"
+  },
+  "homepage": "https://github.com/justinzhou93/ReviewParser#readme",
+  "dependencies": {
+    "nightmare": "^2.10.0"
+  }
+}

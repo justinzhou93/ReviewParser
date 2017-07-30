@@ -5,11 +5,22 @@ module.exports = {
             class: '.',
             className: '.',
             element: ''
-        }
+        };
         if (typeof input === Object){
             nightmare.click(`${DOMlegend[input.identifier]}${input[input.identifier]}`);
         } else if (typeof input === String){
             nightmare.click(`.${input}`);
+        }
+    },
+    contentTypeCheck: function(review, contentTag){
+        if (typeof input === Object){
+            if (contentTag.identifier === 'element'){
+                return review.getElementsByTagName(contentTag.element)[0];
+            } else if (contentTag.identifier === 'id'){
+                return review.getElementById(contentTag.element)[0];
+            }
+        } else if (typeof input === String){
+            return review.getElementsByClassName(contentTag)[0];
         }
     },
     reviewParse: function(review, data, goodbad){
@@ -23,10 +34,18 @@ module.exports = {
             }
         }
     },
-    starCount: function(rating){
-        if (){
+    // FIXME: need to finish how to check for good or bad review
+    starCount: function(rating, startext){
+        let parsedRating;
+        // test = x || y
+        if (startext === 'title'){
+            parsedRating = rating.title[0];
+        } else if (startext === 'span>innerHTML'){
+            parsedRating = rating.children[0].innerHTML;
+        }
+        if (parsedRating < 3){
             return 'good';
-        } else if (){
+        } else if (parsedRating > 3){
             return 'bad';
         }
     }
