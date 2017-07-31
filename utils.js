@@ -15,13 +15,13 @@ module.exports = {
     },
     contentTypeCheck: function(review, contentTag){
         console.log(`in contenttypecheck, arguments = ${arguments}`);
-        if (typeof input === Object){
+        if (typeof contentTag === Object){
             if (contentTag.identifier === 'element'){
                 return review.getElementsByTagName(contentTag.element)[0];
             } else if (contentTag.identifier === 'id'){
                 return review.getElementById(contentTag.element)[0];
             }
-        } else if (typeof input === String){
+        } else if (typeof contentTag === String){
             return review.getElementsByClassName(contentTag)[0];
         }
     },
@@ -47,9 +47,9 @@ module.exports = {
         } else if (startext === 'span>innerHTML'){
             parsedRating = rating.children[0].innerHTML;
         }
-        if (parsedRating < 3){
+        if (parsedRating > 3){
             return 'good';
-        } else if (parsedRating > 3){
+        } else {
             return 'bad';
         }
     }
