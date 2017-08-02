@@ -52,5 +52,41 @@ module.exports = {
         } else {
             return 'bad';
         }
+    },
+    // DO NOT USE THIS. BUT SHOULD BE IMPLEMENTED LATER IN THE FUTURE
+    tempBroken: function(){
+        // let s1 = "p>_innerhtml"
+        // let s2 = "span"
+
+        // function splitting (string, element) {
+        // let commands = string.split('>');
+        // let i = 0;
+        // while(i < commands.length){
+        //     console.log(`Step ${i+1}: `);
+        //     runCommand(commands[i], element);
+        //     i++;
+        // }
+        // }
+
+        // function runCommand (cmd, element) {
+        // if (cmd[0] === '.') {
+        //     console.log('i am a class');
+        // } else if (cmd[0] === '#') {
+        //     console.log('i am an id');
+        // } else if (cmd[0] === '_') {
+        //     if (cmd === '_title'){
+        //     console.log('get title of the element');
+        //     } else if (cmd === '_innerhtml'){
+        //     console.log('do what you would do to get innerHTML of element');
+        //     }
+        // } else if (cmd === 'span') {
+        //     console.log('need to find children, take first option, and innerHTML to remove span that way');
+        // } else {
+        //     console.log('this would be all of the elements here')
+        // }
+        // }
+
+        // splitting(s1);
+        // splitting(s2);
     }
 }
