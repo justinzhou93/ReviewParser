@@ -2,4 +2,6 @@ let scraper = require('./scraper.js');
 
 /* Examples: */
 
-scraper('https://www.yelp.com/biz/tobys-public-house-brooklyn-4');
+let link = 'https://www.yelp.com/biz/dear-irving-new-york';
+
+module.exports = {link: link};

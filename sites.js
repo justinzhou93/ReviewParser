@@ -11,7 +11,7 @@ module.exports = {
     'https://www.yelp.com': {
         name: 'yelp',
         reviewlink: null,
-        next: 'next',
+        next: 'next', // also need .pagination-links_anchor
         reviewsection: 'review-content',
         stars: 'i-stars',
         startext: 'title',
